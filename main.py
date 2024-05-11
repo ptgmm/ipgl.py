@@ -2,7 +2,8 @@
 
 import requests
 import json
-import os 
+import sys
+import os
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -19,7 +20,7 @@ ascii_art = """
 print(ascii_art)
 
 def program ():
-    
+    print("__________________________")
     ip = input('Enter IP Addres: ')
     url = requests.get(f'https://ipinfo.io/{ip}')
 
@@ -47,18 +48,18 @@ def program ():
 program()
 
 
-print('----------------------------------')
-x = int(input('Quit(0)/Start Again(1)'))
-print('----------------------------------')
-while x != 0:
-    
-    if x == 1:
-        program()
-    elif x == 0:
+def loop():
+
+    print("__________________________")
+    x = int(input("0 - Exit/ 1 - Continue: "))
+    if x == 0:
         sys.exit()
+    elif x == 1:
+        program()
     else:
-        x = input(str("Quit(0)/Start(1)"))
+        print("error")
 
-
+while True: 
+    loop()
 
 

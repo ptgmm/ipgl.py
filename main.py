@@ -3,43 +3,49 @@
 import sys
 import os
 import nmap
-import ipgeo 
+from scripts import ipgeo
 
 
 os.system('cls' if os.name == 'nt' else 'clear')
+
 
 ascii_art = """
  _                                  
 (_)                                 
  _ _ __  _ __ ___   ___ _ __  _   _ 
-| | '_ \| '_ ` _ \ / _ \ '_ \| | | |
+| | '_ \\| '_ ` _ \\ / _ \\ '_ \\| | | |
 | | |_) | | | | | |  __/ | | | |_| |
-|_| .__/|_| |_| |_|\___|_| |_|\__,_|
+|_| .__/|_| |_| |_|\\___|_| |_|\\__,_|
   | |                               
   |_|                               
                                                                        
 """
 
-print(ascii_art)
+
 
 def menu():
-    print("IP Geo Loacation")
-    print("NMAP Port Scanner")
-    
-def main():
-    ipgeo.program()
 
-def loop():
+    print(ascii_art)
+    print("ipgeo - 1") 
+    print("nmap - 2")
 
-    x = int(input("0 - Exit/ 1 - Continue: "))
-    if x == 0:
-        sys.exit()
-    elif x == 1:
-        program()
+    menu = input("")
+
+    if menu == "1":
+        os.system('cls' if os.name == 'nt' else 'clear')
+        ipgeo.program()
+    elif menu == "2":
+        os.system('cls' if os.name == 'nt' else 'clear')
+        nmap.program()
     else:
         print("error")
+menu()
 
-while True: 
-    loop()
+
+sth = 1
+while sth > 0:
+    ipgeo.loop()
+
+
 
 

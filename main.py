@@ -4,6 +4,9 @@ import requests
 import json
 import sys
 import os
+import nmap
+import socket 
+
 
 os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -19,11 +22,10 @@ ascii_art = """
 
 print(ascii_art)
 
-def program ():
+def ipgeo ():
     print("__________________________")
     ip = input('Enter IP Addres: ')
     url = requests.get(f'https://ipinfo.io/{ip}')
-
     output = json.loads(url.text)
 
     hostname = (output['hostname'])
@@ -34,6 +36,7 @@ def program ():
     timezone = (output['timezone'])
     postal = (output['postal'])
 
+
     print(f'Hostname: {hostname}')
     print(f'Country: {country}')
     print(f'Region: {region}')
@@ -42,20 +45,34 @@ def program ():
     print(f'Timezone {timezone}')
     print(f'Postal: {postal}')
 
+
     split = loc.split(',')
     print(f'Google Maps: https://www.google.com/maps/?q={split[0]},{split[1]}')
 
-program()
 
+
+def menu():
+    print("__________________________")
+    print("1.Geo Location")
+    print("2.Nmap")
+    what_program = input("Enter a number of program: ")
+    if what_program == "1":
+        ipgeo()
+    elif what_program == "2":
+        nmap()
+    else:
+        print("error")
+
+menu()
 
 def loop():
 
     print("__________________________")
-    x = int(input("0 - Exit/ 1 - Continue: "))
+    x = int(input("0 -  Back/ 1 - Continue: "))
     if x == 0:
-        sys.exit()
+        menu()
     elif x == 1:
-        program()
+        ipgeo()
     else:
         print("error")
 
